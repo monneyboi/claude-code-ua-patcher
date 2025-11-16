@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Configuration
-USER_AGENT="Mozilla/5.0 (X11; Linux x86_64; rv:145.0) Gecko/20100101 Firefox/145.0"
+USER_AGENT="ClaudeCodeUAPatcher/1.0"
 CLAUDE_CLI_PATH="${HOME}/.npm-global/lib/node_modules/@anthropic-ai/claude-code/cli.js"
 
 # Colors for output
