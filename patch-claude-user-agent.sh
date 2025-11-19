@@ -29,7 +29,7 @@ if grep -qF "User-Agent\",\"${USER_AGENT}\"" "$CLAUDE_CLI_PATH"; then
 fi
 
 # Check if this is the default axios user-agent pattern
-if ! grep -q 'O\.set("User-Agent","axios\/' "$CLAUDE_CLI_PATH"; then
+if ! grep -q '\.set("User-Agent","axios/' "$CLAUDE_CLI_PATH"; then
     echo -e "${YELLOW}Warning: Expected axios User-Agent pattern not found.${NC}"
     echo "The code may have changed. Manual inspection required."
     echo ""
@@ -51,7 +51,7 @@ fi
 # Apply the patch
 echo ""
 echo "Applying patch..."
-sed -i "s|O\.set(\"User-Agent\",\"axios/\"+ml,!1)|O.set(\"User-Agent\",\"${USER_AGENT}\",!1)|g" "$CLAUDE_CLI_PATH"
+sed -i "s|\.set(\"User-Agent\",\"axios/\"+[^,]*,!1)|.set(\"User-Agent\",\"${USER_AGENT}\",!1)|g" "$CLAUDE_CLI_PATH"
 
 # Verify the patch was applied
 if grep -qF "User-Agent\",\"${USER_AGENT}\"" "$CLAUDE_CLI_PATH"; then
